@@ -9,13 +9,13 @@ jobs:
     runs-on: windows-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
+      uses: microsoft/setup-msbuild@v2
 
     - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
+      uses: NuGet/setup-nuget@v2
       
     - name: Navigate to Workspace
       run: cd $GITHUB_WORKSPACE
@@ -31,18 +31,18 @@ jobs:
         msbuild.exe aspnet-get-started.sln /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=FileSystem /p:DeleteExistingFiles=True /p:platform="Any CPU" /p:configuration="Release" /p:PublishUrl="../_build"
         
     - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
+      uses: actions/upload-artifact@v4
       with:
-        name: EZRepBundle
+        name: Buldle
         path: "./_build"        
         
     - name: Login to Azure
-      uses: azure/login@v1
+      uses: azure/login@v2
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
     - name: Publish Artifacts to Azure
-      uses: Azure/webapps-deploy@v2
+      uses: Azure/webapps-deploy@v3
       with:
         app-name: aspnet-get-started20240524140807
         package: "./_build"

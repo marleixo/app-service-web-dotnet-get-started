@@ -53,10 +53,7 @@ jobs:
       with:
         app-name: aspnet-get-started20240524140807
         mask-inputs: false
-        # slot-name: 'staging'  # Optional and needed only if the settings have to be configured on the specific deployment slot
-        # app-settings-json: '[{ "name": "soemthing", "value": "1", "slotSetting": false }]'
         connection-strings-json: '[{ "name": "myconnectionstring", "value": "sometedxt", "type": "MySql", "slotSetting": false }]'
-        # connection-strings-json: '${{ secrets.CONNECTION_STRINGS }}'
 
     - name: Publish Artifacts to Azure
       uses: Azure/webapps-deploy@v3

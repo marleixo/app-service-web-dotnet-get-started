@@ -1,4 +1,4 @@
-name: EZRep Build
+name: .Net Framework CI-CD
 
 on:
   push:
